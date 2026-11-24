@@ -108,6 +108,7 @@ nav .links a{color:#efe6ea;text-decoration:none;font-size:14px}
 .adv span{display:block;font-size:14px;color:#c4b4bf;margin-top:4px}
 .adv span.role{color:var(--rosel);font-weight:600}
 .adv.noimg{grid-template-columns:1fr}
+.xlink{background:#f1e8ec;color:#2e2230;padding:clamp(36px,5vw,64px) max(5vw,16px)}.xlink .in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(20px,4vw,48px);align-items:center}.xlink img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px}.xlink .k{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#6f6470}.xlink h3{font-size:clamp(28px,3.4vw,40px);margin:8px 0 10px}.xlink p{color:#6f6470;max-width:520px}.xlink a.btn{margin-top:18px;background:#6d4a63;color:#fff}@media(max-width:720px){.xlink .in{grid-template-columns:1fr}}
 footer{background:#1f171f;color:#bfaeb9;font-size:13px;padding:28px max(5vw,16px) 96px;text-align:center}
 .dock{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none;gap:10px}
 .dock a{flex:1}
@@ -250,6 +251,14 @@ footer{background:#1f171f;color:#bfaeb9;font-size:13px;padding:28px max(5vw,16px
     </div>
   </div>
 </section>
+
+<section class="xlink" aria-label="Dự án khác">
+  <div class="in">
+    <img src="https://viethoangub9889-ux.github.io/primabay-halong/img/tongquan.webp" alt="Hai tòa tháp Prima Bay" loading="lazy">
+    <div><div class="k">Dự án khác của Team Việt Hoàng</div><h3>Prima Bay, Bán đảo 1</h3><p>Tháp đôi P &amp; M 30 tầng ở cửa ngõ Bán đảo 1 Halong Marina, kế bên hồ nhạc nước Halo Bay Show. Có bảng tính giá theo từng phương thức thanh toán.</p><a class="btn js-xlink" href="https://viethoangub9889-ux.github.io/primabay-halong/">Xem dự án Prima Bay</a></div>
+  </div>
+</section>
+<script>{const n=new URLSearchParams(location.search).get('ns');if(n)document.querySelectorAll('.js-xlink').forEach(a=>{const u=new URL(a.href);u.searchParams.set('ns',n);a.href=u})}</script>
 
 <footer>Trang thông tin do Team Việt Hoàng (đội tư vấn bán hàng) thực hiện, không phải website chính thức của chủ đầu tư. Hình ảnh phối cảnh từ chủ đầu tư, mang tính minh họa. Thông tin tham khảo tại thời điểm 11/2026, có thể thay đổi.</footer>
 
