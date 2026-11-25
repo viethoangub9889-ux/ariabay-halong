@@ -126,6 +126,7 @@ footer{background:#1f171f;color:#bfaeb9;font-size:13px;padding:28px max(5vw,16px
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 @media(max-width:720px){.hero .in{padding-bottom:96px}.hero{min-height:auto}.hero .in{padding-top:110px}}.facts span{white-space:nowrap;flex:none}.facts b{min-width:0}
 .dock{transition:transform .35s,opacity .35s}.dock.dock-hide{transform:translateY(130%);opacity:0;pointer-events:none}
+.js-share{font-family:inherit;cursor:pointer}.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#1c2526;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;z-index:60;opacity:0;transition:opacity .3s;max-width:90vw;text-align:center}.toast.on{opacity:1}
 </style>
 </head>
 <body>
@@ -141,7 +142,7 @@ footer{background:#1f171f;color:#bfaeb9;font-size:13px;padding:28px max(5vw,16px
     <div class="kick">Bán đảo 3 · Halong Marina · Bãi Cháy</div>
     <h1>Aria Bay, hàng ghế đầu <em>bên vịnh di sản</em></h1>
     <p class="sub">Tháp đôi Sol &amp; Mi 40 tầng của BIM Land, tâm điểm Marina Bayfront District, nhìn thẳng ra vịnh Hạ Long.</p>
-    <div class="cta"><a class="btn light" href="#lienhe">Nhận bảng giá mới nhất</a><a class="btn ghost" href="#v360">Xem 360° dự án</a></div>
+    <div class="cta"><a class="btn light" href="#lienhe">Nhận bảng giá mới nhất</a><a class="btn ghost" href="#v360">Xem 360° dự án</a><button type="button" class="btn ghost js-share">↗ Chia sẻ dự án</button></div>
     <div class="stats">
       <div><b>2 tháp</b><span>Sol (S) &amp; Mi (M)</span></div>
       <div><b>40 tầng</b><span>mỗi tháp, 2 tầng hầm</span></div>
@@ -255,7 +256,7 @@ footer{background:#1f171f;color:#bfaeb9;font-size:13px;padding:28px max(5vw,16px
         <div><span>Dự án</span><b>Aria Bay, Halong Marina, Bãi Cháy</b></div>
         <div><span>Chủ đầu tư</span><b>BIM Land</b></div>
       </div>
-      <div class="cta"><a class="btn light js-tel" href="tel:0829980198">Gọi tư vấn</a><a class="btn zalo js-zalo" href="https://zalo.me/0829980198">Chat Zalo</a><a class="btn ghost" href="https://www.ariabay.com.vn" target="_blank" rel="noopener">Website chủ đầu tư</a></div>
+      <div class="cta"><a class="btn light js-tel" href="tel:0829980198">Gọi tư vấn</a><a class="btn zalo js-zalo" href="https://zalo.me/0829980198">Chat Zalo</a><a class="btn ghost" href="https://www.ariabay.com.vn" target="_blank" rel="noopener">Website chủ đầu tư</a><button type="button" class="btn ghost js-share">↗ Chia sẻ dự án</button></div>
     </div>
   </div>
 </section>
@@ -287,5 +288,6 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 }
 </script>
 <script>{const d=document.querySelector(".dock"),h=document.querySelector(".hero");if(d&&h){const f=()=>d.classList.toggle("dock-hide",scrollY<h.offsetHeight-innerHeight*0.6);addEventListener("scroll",f,{passive:true});addEventListener("resize",f);f()}}</script>
+<script>{const T="Aria Bay Hạ Long",X="Aria Bay: tháp đôi Sol & Mi 40 tầng tại Bán đảo 3 Halong Marina, 3 mặt hướng biển, 100% căn nhìn vịnh, hồ hoặc phố. Xem tổng quan, loại căn, tiện ích và 360°:";const toast=m=>{let t=document.querySelector(".toast");if(!t){t=document.createElement("div");t.className="toast";document.body.appendChild(t)}t.textContent=m;t.classList.add("on");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("on"),2600)};document.querySelectorAll(".js-share").forEach(b=>b.addEventListener("click",async()=>{const u=location.origin+location.pathname+location.search;if(navigator.share){try{await navigator.share({title:T,text:X,url:u});return}catch(e){if(e.name==="AbortError")return}}try{await navigator.clipboard.writeText(X+" "+u);toast("Đã sao chép link dự án, dán vào Zalo để gửi khách")}catch(e){prompt("Sao chép link này:",u)}}))}</script>
 </body>
 </html>
