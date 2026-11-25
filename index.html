@@ -6,7 +6,8 @@
 <title>Aria Bay Hạ Long</title>
 <link rel="icon" type="image/png" sizes="32x32" href="icons/aria-32.png">
 <link rel="apple-touch-icon" href="icons/aria-180.png">
-<link rel="manifest" href="manifest.webmanifest">
+<script>{const q=new URLSearchParams(location.search);let n=q.get("ns");const sa=matchMedia("(display-mode: standalone)").matches||navigator.standalone;try{if(n)localStorage.setItem("vh_ns",n);else if(sa&&(n=localStorage.getItem("vh_ns"))){q.set("ns",n);history.replaceState(null,"",location.pathname+"?"+q)}}catch(e){}const m={"name": "Aria Bay Hạ Long", "short_name": "Aria Bay", "display": "standalone", "background_color": "#2e2230", "theme_color": "#2e2230", "icons": [{"src": "icons/aria-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "icons/aria-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}]};const b=new URL("./",location.href);m.start_url=new URL(n?"./?ns="+encodeURIComponent(n):"./",b).href;m.scope=b.href;m.icons=m.icons.map(i=>({...i,src:new URL(i.src,b).href}));const l=document.createElement("link");l.rel="manifest";l.href="data:application/manifest+json,"+encodeURIComponent(JSON.stringify(m));document.head.appendChild(l)}</script>
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Aria Bay">
 <meta name="theme-color" content="#2e2230">
 <meta name="description" content="Aria Bay, tháp đôi Sol &amp; Mi 40 tầng tại Bán đảo 3 Halong Marina, Bãi Cháy. Hàng ghế đầu bên vịnh Hạ Long.">
