@@ -124,6 +124,8 @@ footer{background:#1f171f;color:#bfaeb9;font-size:13px;padding:28px max(5vw,16px
 @media(max-width:720px){.two,.contact,.towers{grid-template-columns:1fr}.dock{display:flex}nav .btn{display:none}.groups{grid-template-columns:1fr}.v360{aspect-ratio:4/5}}
 @media(max-width:480px){.units{grid-template-columns:1fr}.adv{grid-template-columns:110px minmax(0,1fr)}.adv img{width:110px;height:146px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+@media(max-width:720px){.hero .in{padding-bottom:96px}.hero{min-height:auto}.hero .in{padding-top:110px}}.facts span{white-space:nowrap;flex:none}.facts b{min-width:0}
+.dock{transition:transform .35s,opacity .35s}.dock.dock-hide{transform:translateY(130%);opacity:0;pointer-events:none}
 </style>
 </head>
 <body>
@@ -284,5 +286,6 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 }
 </script>
+<script>{const d=document.querySelector(".dock"),h=document.querySelector(".hero");if(d&&h){const f=()=>d.classList.toggle("dock-hide",scrollY<h.offsetHeight-innerHeight*0.6);addEventListener("scroll",f,{passive:true});addEventListener("resize",f);f()}}</script>
 </body>
 </html>
