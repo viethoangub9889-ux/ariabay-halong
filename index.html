@@ -275,7 +275,7 @@ footer{background:#1f171f;color:#bfaeb9;font-size:13px;padding:28px max(5vw,16px
 
 <script>
 {
-const NS={hoang:['Việt Hoàng','0829980198','img/viet-hoang.webp'],duc:['Phạm Đức','0838011995'],long:['Việt Long','0353473733','img/viet-long.webp'],thaiha:['Thái Hà','0933161888','img/thai-ha.webp'],linh:['Linh Lê','0936994345','img/linh-le.webp',1]};
+const NS={hoang:['Việt Hoàng','0829980198','img/viet-hoang.webp'],duc:['Phạm Đức','0838011995'],long:['Việt Long','0353473733','img/viet-long.webp'],thaiha:['Thái Hà','0933161888','img/thai-ha.webp'],linh:['Linh Lê','0936994345','img/linh-le.webp',1],cuc:['Kim Cúc','0793386930','',1]};
 const A=NS[(new URLSearchParams(location.search).get('ns')||'').toLowerCase()]||NS.hoang;
 if(A[3]){document.querySelectorAll('span,b').forEach(e=>{if(e.children.length===0&&e.textContent.trim()==='Team Việt Hoàng'){const r=e.parentElement;(e.tagName==='B'&&r&&r.children.length===2?r:e).remove()}});const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let t;while(t=w.nextNode()){if(t.nodeValue.includes('Team Việt Hoàng'))t.nodeValue=t.nodeValue.replace('Dự án khác của Team Việt Hoàng','Dự án khác').replace('Team Việt Hoàng (đội tư vấn bán hàng)','đội tư vấn bán hàng').replace('Team Việt Hoàng','đội tư vấn')}}
 const fmt=p=>p.replace(/^(\d{4})(\d{3})(\d{3})$/,'$1 $2 $3');
