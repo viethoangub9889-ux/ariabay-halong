@@ -127,6 +127,11 @@ footer{background:#1f171f;color:#bfaeb9;font-size:13px;padding:28px max(5vw,16px
 @media(max-width:720px){.hero .in{padding-bottom:96px}.hero{min-height:auto}.hero .in{padding-top:110px}}.facts span{white-space:nowrap;flex:none}.facts b{min-width:0}
 .dock{transition:transform .35s,opacity .35s}.dock.dock-hide{transform:translateY(130%);opacity:0;pointer-events:none}
 .js-share{font-family:inherit;cursor:pointer}.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#1c2526;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;z-index:60;opacity:0;transition:opacity .3s;max-width:90vw;text-align:center}.toast.on{opacity:1}
+.qtabs{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 16px}.qtabs button{font:inherit;font-size:14px;padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);cursor:pointer;color:inherit}.qtabs button.on{background:var(--plum);border-color:var(--plum);color:#fff}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}.qc{text-align:left;font:inherit;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;cursor:pointer;display:flex;flex-direction:column;gap:4px}.qc:hover{border-color:var(--plum)}.qc b{font-size:20px;color:var(--plum)}.qc .m{font-size:13px;color:var(--mute)}.qc .pr{font-size:17px;font-weight:600;margin-top:6px}.qc .tag{align-self:flex-start;font-size:11px;padding:2px 8px;border-radius:99px;background:var(--plum);color:#fff;margin-bottom:4px}.qc.hide{display:none}
+.qd{position:fixed;inset:0;z-index:99;background:rgba(20,12,20,.6);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:16px}.qd[hidden]{display:none}.qbox{position:relative;background:var(--card,#fff);color:var(--ink,#222);border-radius:18px;max-width:760px;width:100%;margin:auto;padding:20px}.qx{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.08);font-size:26px;cursor:pointer;color:inherit}
+.qbox img{width:100%;border-radius:12px;display:block;margin:12px 0}.qbox h3{font-size:26px;margin:0 40px 4px 0}.qinfo{color:var(--mute);font-size:14px}.qm{width:100%;border-collapse:collapse;margin-top:10px;font-size:15px}.qm td{padding:10px 6px;border-top:1px solid var(--line)}.qm td:last-child{text-align:right;font-weight:600;white-space:nowrap}.qm small{display:block;color:var(--mute);font-size:12px;font-weight:400}.qchk{display:flex;gap:8px;align-items:center;margin-top:12px;font-size:15px}.qbtn{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+@media(max-width:720px){.qgrid{grid-template-columns:1fr 1fr;gap:8px}.qc{padding:12px}.qc b{font-size:17px}.qc .pr{font-size:15px}}
 </style>
 </head>
 <body>
@@ -202,6 +207,17 @@ footer{background:#1f171f;color:#bfaeb9;font-size:13px;padding:28px max(5vw,16px
   <div class="in rv"><div class="kick">Front Row</div><h2>Ba mặt hướng biển, 100% căn nhìn vịnh, hồ hoặc phố</h2><p>Tháp đôi giật cấp đón trọn vịnh Hạ Long, hồ cảnh quan và phố biển Halong Marina.</p></div>
 </section>
 
+<section class="band" id="quy" hidden>
+  <div class="wrap">
+    <div class="kick rv">Quỹ căn độc quyền</div>
+    <h2 class="rv">Căn đẹp đang giữ riêng cho khách của đội</h2>
+    <p class="lead rv">Bấm vào từng căn để xem vị trí chỉ căn và giá theo 4 phương thức thanh toán.</p>
+    <div class="qtabs rv"><button type="button" class="on" data-k="">Tất cả</button><button type="button" data-k="Studio">Studio</button><button type="button" data-k="1PN">1PN</button><button type="button" data-k="2PN">2PN</button><button type="button" data-k="3PN">3PN</button></div>
+    <div class="qgrid" id="qgrid"></div>
+    <p class="note">Giá niêm yết gồm VAT, theo bảng hàng quỹ độc quyền ngày 28/11/2026. Giá theo phương thức đã trừ chiết khấu đặc biệt theo loại căn, quà tặng (45 triệu, TTS 95% là 75 triệu) và chiết khấu phương thức; tổng hợp đồng gồm VAT 10% và kinh phí bảo trì 2%. Căn có thể đã có khách giữ, nhắn tư vấn để kiểm tra trước. Số liệu tạm tính, xác nhận chính thức khi ký hợp đồng.</p>
+  </div>
+</section>
+<div class="qd" id="qd" hidden><div class="qbox"><button type="button" class="qx" aria-label="Đóng">×</button><div id="qdc"></div></div></div>
 <section class="band dark" id="tienich">
   <div class="wrap">
     <div class="kick rv">Tiện ích</div>
@@ -275,7 +291,7 @@ footer{background:#1f171f;color:#bfaeb9;font-size:13px;padding:28px max(5vw,16px
 
 <script>
 {
-const NS={hoang:['Việt Hoàng','0829980198','img/viet-hoang.webp'],duc:['Phạm Đức','0838011995'],long:['Việt Long','0353473733','img/viet-long.webp'],thaiha:['Thái Hà','0933161888','img/thai-ha.webp'],linh:['Linh Lê','0936994345','img/linh-le.webp',1],cuc:['Kim Cúc','0793386930','img/kim-cuc.webp',1]};
+const NS={hoang:['Việt Hoàng','0829980198','img/viet-hoang.webp'],duc:['Phạm Đức','0838011995'],long:['Việt Long','0353473733','img/viet-long.webp'],thaiha:['Thái Hà','0933161888','img/thai-ha.webp'],linh:['Linh Lê','0936994345','img/linh-le.webp',1],cuc:['Kim Cúc','0793386930','img/kim-cuc.webp',1],trung:['Đào Quang Trung','0976982240'],maichi:['Phạm Mai Chi','0375247858'],thuy:['Minh Thuý','0338652529']};
 const A=NS[(new URLSearchParams(location.search).get('ns')||'').toLowerCase()]||NS.hoang;
 if(A[3]){document.querySelectorAll('span,b').forEach(e=>{if(e.children.length===0&&e.textContent.trim()==='Team Việt Hoàng'){const r=e.parentElement;(e.tagName==='B'&&r&&r.children.length===2?r:e).remove()}});const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let t;while(t=w.nextNode()){if(t.nodeValue.includes('Team Việt Hoàng'))t.nodeValue=t.nodeValue.replace('Dự án khác của Team Việt Hoàng','Dự án khác').replace('Team Việt Hoàng (đội tư vấn bán hàng)','đội tư vấn bán hàng').replace('Team Việt Hoàng','đội tư vấn')}}
 const fmt=p=>p.replace(/^(\d{4})(\d{3})(\d{3})$/,'$1 $2 $3');
@@ -290,5 +306,21 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 </script>
 <script>{const d=document.querySelector(".dock"),h=document.querySelector(".hero");if(d&&h){const f=()=>d.classList.toggle("dock-hide",scrollY<h.offsetHeight-innerHeight*0.6);addEventListener("scroll",f,{passive:true});addEventListener("resize",f);f()}}</script>
 <script>{const T="Aria Bay Hạ Long",X="Aria Bay: tháp đôi Sol & Mi 40 tầng tại Bán đảo 3 Halong Marina, 3 mặt hướng biển, 100% căn nhìn vịnh, hồ hoặc phố. Xem tổng quan, loại căn, tiện ích và 360°:";const toast=m=>{let t=document.querySelector(".toast");if(!t){t=document.createElement("div");t.className="toast";document.body.appendChild(t)}t.textContent=m;t.classList.add("on");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("on"),2600)};document.querySelectorAll(".js-share").forEach(b=>b.addEventListener("click",async()=>{const u=location.origin+location.pathname+location.search;if(navigator.share){try{await navigator.share({title:T,text:X,url:u});return}catch(e){if(e.name==="AbortError")return}}try{await navigator.clipboard.writeText(X+" "+u);toast("Đã sao chép link dự án, dán vào Zalo để gửi khách")}catch(e){prompt("Sao chép link này:",u)}}))}</script>
+<script>{const Q=[{"c": "M-16-05", "k": "3PN", "h": "Đông Nam", "a": 93.9, "p": 8594853680, "l": 7813503345, "s": 50000000, "v": "Đảo Rều – vịnh"}, {"c": "M-23-02", "k": "1PN", "h": "Đông Nam", "a": 48.6, "p": 4310851452, "l": 3918955865, "s": 40000000, "v": "Đảo Rều – vịnh"}, {"c": "S-05-19", "k": "2PN", "h": "Đông Nam", "a": 75.2, "p": 6508734412, "l": 5917031284, "s": 50000000, "v": "Vịnh"}, {"c": "S-09-09", "k": "3PN", "h": "Đông Nam", "a": 96.3, "p": 10955101913, "l": 9959183557, "s": 50000000, "v": "Vịnh"}, {"c": "S-11-09", "k": "3PN", "h": "Đông Nam", "a": 96.3, "p": 11070711178, "l": 10064282889, "s": 50000000, "v": "Vịnh"}, {"c": "S-29-03", "k": "Studio", "h": "Tây Bắc", "a": 36.2, "p": 3528914497, "l": 3208104088, "s": 30000000, "v": "Hồ nhạc nước"}, {"c": "M-12-19", "k": "Studio", "h": "Tây Bắc", "a": 35.7, "p": 2969649539, "l": 2699681399, "s": 30000000, "v": "Hồ nhạc nước"}, {"c": "M-18-18", "k": "Studio", "h": "Tây Bắc", "a": 35.8, "p": 3054497716, "l": 2776816105, "s": 30000000, "v": "Hồ nhạc nước"}, {"c": "M-27-01", "k": "2PN", "h": "Đông Nam", "a": 73.1, "p": 7139944734, "l": 6490858849, "s": 50000000, "v": "Đảo Rều – vịnh"}, {"c": "M-28-03", "k": "1PN", "h": "Đông Nam", "a": 49, "p": 4473599863, "l": 4066908966, "s": 40000000, "v": "Đảo Rều – vịnh"}, {"c": "S-10-31", "k": "2PN", "h": "Đông Nam", "a": 75.1, "p": 6505007571, "l": 5913643246, "s": 50000000, "v": "Vịnh"}, {"c": "S-12A-02", "k": "Studio", "h": "Tây Bắc", "a": 35.6, "p": 3215397943, "l": 2923089039, "s": 30000000, "v": "Hồ nhạc nước"}, {"c": "S-15-21", "k": "1PN", "h": "Đông Nam", "a": 52, "p": 4714115742, "l": 4285559765, "s": 40000000, "v": "Vịnh"}];
+const OK=["","hoang","duc","long","trung","maichi","thuy"],key=(new URLSearchParams(location.search).get("ns")||"").toLowerCase();
+if(OK.includes(key)){const sec=document.getElementById("quy");sec.hidden=false;
+const ty=n=>(n/1e9).toLocaleString("vi-VN",{minimumFractionDigits:2,maximumFractionDigits:2})+" tỷ",vnd=n=>Math.round(n).toLocaleString("vi-VN")+" đ";
+const g=document.getElementById("qgrid");
+g.innerHTML=Q.map((u,i)=>`<button type="button" class="qc" data-i="${i}" data-k="${u.k}"><span class="tag">View ${u.v}</span><b>${u.c}</b><span class="m">${u.k} · ${u.a.toLocaleString("vi-VN")} m² · ${u.h}</span><span class="pr">${ty(u.p)}</span><span class="m">Giá niêm yết gồm VAT</span></button>`).join("");
+const tabs=sec.querySelectorAll(".qtabs button");tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>x.classList.toggle("on",x===b));g.querySelectorAll(".qc").forEach(c=>c.classList.toggle("hide",!!b.dataset.k&&c.dataset.k!==b.dataset.k))});
+const d=document.getElementById("qd"),dc=document.getElementById("qdc");
+const M=[["Thanh toán tiến độ","CK 4%",.96,45e6],["Thanh toán sớm 95%","CK 16%",.84,75e6],["Thanh toán sớm 50%","CK 10%",.9,45e6],["Vay ngân hàng","Vay tối đa 70%, HTLS 65% trong 24 tháng",1,45e6]];
+const draw=(u,ref)=>{const rows=M.map(m=>{const t=(u.l-u.s-m[3])*m[2]*(ref?.98:1)*1.12;return `<tr><td>${m[0]}<small>${m[1]}</small></td><td>${vnd(t)}<small>${ty(t)}</small></td></tr>`}).join("");
+dc.innerHTML=`<h3>${u.c}</h3><div class="qinfo">${u.k} · ${u.a.toLocaleString("vi-VN")} m² thông thủy · Hướng ${u.h} · View ${u.v}</div><img src="img/quy/${u.c.toLowerCase()}.webp" alt="Chỉ căn ${u.c} Aria Bay"><div class="qinfo">Giá niêm yết (gồm VAT): <b>${vnd(u.p)}</b></div><table class="qm"><tr><td><b>Tổng giá trị hợp đồng</b><small>gồm VAT 10% + KPBT 2%</small></td><td></td></tr>${rows}</table><label class="qchk"><input type="checkbox" id="qref" ${ref?"checked":""}> Có người giới thiệu (giảm thêm 2%)</label><div class="qbtn"><a class="btn js-zalo" href="${(document.querySelector(".js-zalo")||{}).href||"#"}">Nhắn Zalo giữ căn ${u.c}</a><a class="btn ghost js-tel" href="${(document.querySelector(".js-tel")||{}).href||"#"}">Gọi tư vấn</a></div>`;
+dc.querySelector("#qref").onchange=e=>draw(u,e.target.checked)};
+const close=()=>{if(d.hidden)return;d.hidden=true;document.body.style.overflow="";if(history.state&&history.state.qd)history.back()};
+g.querySelectorAll(".qc").forEach(c=>c.onclick=()=>{draw(Q[+c.dataset.i],false);d.hidden=false;document.body.style.overflow="hidden";d.scrollTop=0;try{history.pushState({qd:1},"")}catch(e){}});
+d.querySelector(".qx").onclick=close;d.onclick=e=>{if(e.target===d)close()};addEventListener("popstate",()=>{d.hidden=true;document.body.style.overflow=""});addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+const nl=document.querySelector('a[href="#canho"]');if(nl){const x=nl.cloneNode(true);x.href="#quy";x.textContent="Quỹ căn";nl.after(x)}}}</script>
 </body>
 </html>
